@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Deportista</title>
+</head>
+<body>
+    <h1>Agregar Deportista</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Agregar</button>
+    </form>
+    <a href="{% url 'home' %}">Volver al Inicio</a>
+</body>
+</html>
