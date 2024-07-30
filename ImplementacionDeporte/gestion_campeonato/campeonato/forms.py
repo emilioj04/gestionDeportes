@@ -1,6 +1,12 @@
 from django import forms
 from .models import Equipo, Deportista, Campeonato, Inscripcion
 
+class CampeonatoForm(forms.ModelForm):
+    class Meta:
+        model = Campeonato
+        fields = ['nombre', 'tipo_campeonato', 'deporte', 'nro_equipos', 'nro_jugadores']
+
+
 class InscripcionEquipoForm(forms.ModelForm):
     class Meta:
         model = Inscripcion

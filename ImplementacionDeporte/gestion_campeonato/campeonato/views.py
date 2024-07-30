@@ -1,6 +1,17 @@
 from django.shortcuts import render, redirect
 from .models import Campeonato, Equipo, Deportista, Inscripcion
-from .forms import InscripcionEquipoForm, InscripcionJugadoresForm
+from .forms import *
+
+def agregar_deportista(request):
+    if request.method == 'POST':
+        form = InscripcionDeportistaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = InscripcionDeportistaForm()
+    return render(request, 'campeonato/agregar_deportista.html', {'form': form})
+
 
 def inscribir_equipo(request):
     if request.method == 'POST':
@@ -25,3 +36,13 @@ def inscribir_jugadores(request, inscripcion_id):
 
 def home(request):
     return render(request, 'campeonato/home.html')
+
+def crear_campeonato(request):
+    if request.method == 'POST':
+        form = CampeonatoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = CampeonatoForm()
+    return render(request, 'campeonato/crear_campeonato.html', {'form': form})
