@@ -46,3 +46,13 @@ def crear_campeonato(request):
     else:
         form = CampeonatoForm()
     return render(request, 'campeonato/crear_campeonato.html', {'form': form})
+
+def crear_equipo(request):
+    if request.method == 'POST':
+        form = EquipoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = EquipoForm()
+    return render(request, 'campeonato/crear_equipo.html', {'form': form})
