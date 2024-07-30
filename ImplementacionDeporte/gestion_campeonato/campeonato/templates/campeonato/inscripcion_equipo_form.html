@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inscribir Equipo</title>
+</head>
+<body>
+    <h1>Inscribir Equipo en Campeonato</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Inscribir</button>
+    </form>
+</body>
+</html>
