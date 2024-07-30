@@ -9,7 +9,11 @@
         <h2>{{ campeonato.nombre }}</h2>
         <ul>
             {% for inscripcion in equipos %}
-                <li>{{ inscripcion.equipo.nombre }}</li>
+                <li>
+                    <a href="{% url 'listar_jugadores_equipo' inscripcion.id %}">
+                        {{ inscripcion.equipo.nombre }}
+                    </a>
+                </li>
             {% endfor %}
         </ul>
     {% endfor %}
