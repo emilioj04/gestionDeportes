@@ -42,6 +42,9 @@ class Inscripcion(models.Model):
     class Meta:
         unique_together = ('equipo', 'campeonato')
 
+    def __str__(self):
+        return f"{self.equipo.nombre} en {self.campeonato.nombre}"
+
 class Posicion(models.Model):
     equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE)
     campeonato = models.ForeignKey(Campeonato, on_delete=models.CASCADE)

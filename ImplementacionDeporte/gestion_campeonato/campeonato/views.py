@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Campeonato, Equipo, Deportista, Inscripcion
+from .models import *
 from .forms import *
 
 def agregar_deportista(request):
@@ -56,3 +56,11 @@ def crear_equipo(request):
     else:
         form = EquipoForm()
     return render(request, 'campeonato/crear_equipo.html', {'form': form})
+
+def listar_equipos_por_campeonato(request):
+    campeonatos = Campeonato.objects.all()
+    campeonatos_equipos = []
+    for campeonato in campeonatos:
+        equipos = Inscripcion.objects.filter(campeonato=campeonato).select_related('equipo')
+        campeonatos_equipos.append((campeonato, equipos))
+    return render(request, 'campeonato/listar_equipos_por_campeonato.html', {'campeonatos_equipos': campeonatos_equipos})

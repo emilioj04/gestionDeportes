@@ -8,4 +8,5 @@ urlpatterns = [
     path('agregar_deportista/', views.agregar_deportista, name='agregar_deportista'),
     path('crear_campeonato/', views.crear_campeonato, name='crear_campeonato'),
     path('crear_equipo/', views.crear_equipo, name='crear_equipo'),
+    path('listar_equipos_por_campeonato/', views.listar_equipos_por_campeonato, name='listar_equipos_por_campeonato'),
 ]
