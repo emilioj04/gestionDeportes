@@ -64,3 +64,40 @@ def listar_equipos_por_campeonato(request):
         equipos = Inscripcion.objects.filter(campeonato=campeonato).select_related('equipo')
         campeonatos_equipos.append((campeonato, equipos))
     return render(request, 'campeonato/listar_equipos_por_campeonato.html', {'campeonatos_equipos': campeonatos_equipos})
+
+def crear_partido(request):
+    if request.method == 'POST':
+        form = PartidoForm(request.POST)
+        if form.is_valid():
+            # Crear un resultado y luego el partido
+            anotacion_equipo1 = form.cleaned_data['anotacion_equipo1']
+            anotacion_equipo2 = form.cleaned_data['anotacion_equipo2']
+            empate = form.cleaned_data['empate']
+            equipo1 = form.cleaned_data['equipo1']
+            equipo2 = form.cleaned_data['equipo2']
+            
+            resultado = Resultado(
+                anotacion_equipo1=anotacion_equipo1,
+                anotacion_equipo2=anotacion_equipo2,
+                empate=empate,
+                equipo_ganador=equipo1 if anotacion_equipo1 > anotacion_equipo2 else equipo2,
+                equipo_perdedor=equipo2 if anotacion_equipo1 > anotacion_equipo2 else equipo1
+            )
+            if empate:
+                resultado.equipo_ganador = None
+                resultado.equipo_perdedor = None
+            resultado.save()
+            
+            partido = Partido(
+                nro_partido=form.cleaned_data['nro_partido'],
+                fecha=form.cleaned_data['fecha'],
+                equipo1=equipo1,
+                equipo2=equipo2,
+                resultado=resultado
+            )
+            partido.save()
+
+            return redirect('home')
+    else:
+        form = PartidoForm()
+    return render(request, 'campeonato/crear_partido.html', {'form': form})

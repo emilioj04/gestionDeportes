@@ -63,6 +63,12 @@ class Resultado(models.Model):
     equipo_perdedor = models.ForeignKey(Equipo, related_name='perdedor', on_delete=models.SET_NULL, null=True, blank=True)
     anotacion_equipo1 = models.IntegerField()
     anotacion_equipo2 = models.IntegerField()
+    empate = models.BooleanField(default=False)  # Nuevo campo para indicar si fue un empate
+
+    def __str__(self):
+        if self.empate:
+            return f"Empate {self.anotacion_equipo1}-{self.anotacion_equipo2}"
+        return f"{self.equipo_ganador} {self.anotacion_equipo1}-{self.anotacion_equipo2} {self.equipo_perdedor}"
 
 class Partido(models.Model):
     nro_partido = models.IntegerField(unique=True)

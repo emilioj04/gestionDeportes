@@ -9,4 +9,5 @@ urlpatterns = [
     path('crear_campeonato/', views.crear_campeonato, name='crear_campeonato'),
     path('crear_equipo/', views.crear_equipo, name='crear_equipo'),
     path('listar_equipos_por_campeonato/', views.listar_equipos_por_campeonato, name='listar_equipos_por_campeonato'),
+    path('crear_partido/', views.crear_partido, name='crear_partido'),
 ]
