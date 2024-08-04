@@ -1,0 +1,14 @@
+{% extends 'campeonato/base.html' %}
+
+{% block title %}Detalles del Deportista{% endblock %}
+
+{% block content %}
+    <h1>{{ deportista.nombre }} {{ deportista.apellido }}</h1>
+    <p><strong>ID:</strong> {{ deportista.identificacion }}</p>
+    <p><strong>Género:</strong> {{ deportista.genero }}</p>
+    <p><strong>Número:</strong> {{ deportista.numero }}</p>
+    <p><strong>Fecha de Nacimiento:</strong> {{ deportista.fecha_nacimiento }}</p>
+    <p><strong>Equipo:</strong> {{ deportista.equipo.nombre }}</p>
+
+    <a href="{% url 'home' %}">Volver al Inicio</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'campeonato/base.html' %}
+
+{% block title %}Crear Campeonato{% endblock %}
+
+{% block content %}
+    <h1>Crear Campeonato</h1>
+    <form method="post" class="form-container">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Crear Campeonato</button>
+    </form>
+    <a href="{% url 'home' %}" class="btn-back">Volver al Inicio</a>
+{% endblock %}

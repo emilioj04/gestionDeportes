@@ -1,0 +1,39 @@
+{% extends 'campeonato/base.html' %}
+
+{% block title %}Inicializar Campeonato{% endblock %}
+
+{% block content %}
+<h1>Inicializar Campeonato</h1>
+
+{% if equipos_faltantes or equipos_sin_deportistas_suficientes %}
+    <div>
+        <h2>Advertencias</h2>
+        {% if equipos_faltantes %}
+            <h3>Faltan Equipos:</h3>
+            <ul>
+                {% for advertencia in equipos_faltantes %}
+                    <li>{{ advertencia }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% if equipos_sin_deportistas_suficientes %}
+            <h3>Los siguientes equipos no tienen suficientes deportistas:</h3>
+            <ul>
+                {% for equipo in equipos_sin_deportistas_suficientes %}
+                    <li>{{ equipo }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <p>¿Desea inicializar el campeonato de todas maneras?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="confirmar" value="si">Sí</button>
+            <button type="submit" name="confirmar" value="no">No</button>
+        </form>
+    </div>
+{% else %}
+    <p>Todos los equipos tienen suficientes deportistas y se han inscrito todos los equipos necesarios. El campeonato ha sido inicializado.</p>
+    <a href="{% url 'detalle_campeonato' campeonato.id %}">Volver al Detalle del Campeonato</a>
+{% endif %}
+
+{% endblock %}

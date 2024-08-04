@@ -1,0 +1,18 @@
+{% extends 'campeonato/base.html' %}
+
+{% block title %}Inscribir Equipo{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Inscribir Equipo en el Campeonato</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="button">Inscribir Equipo</button>
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+        </form>
+        <a href="{% url 'home' %}" class="button">Volver al Inicio</a>
+    </div>
+{% endblock %}

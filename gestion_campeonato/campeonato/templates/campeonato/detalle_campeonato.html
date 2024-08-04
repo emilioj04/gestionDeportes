@@ -1,0 +1,58 @@
+{% extends 'campeonato/base.html' %}
+
+{% block title %}Detalles del Campeonato{% endblock %}
+
+{% block content %}
+    <h1>{{ campeonato.nombre }}</h1>
+    <p><strong>Deporte:</strong> {{ campeonato.deporte }}</p>
+    <p><strong>Fecha de Inicio:</strong> {{ campeonato.fecha_inicio }}</p>
+    <p><strong>Fecha de Fin:</strong> {{ campeonato.fecha_fin }}</p>
+    <p><strong>Tipo:</strong> {{ campeonato.tipo }}</p>
+    <p><strong>Género:</strong> {{ campeonato.genero }}</p>
+    <p><strong>Número de Equipos:</strong> {{ campeonato.nro_equipos }}</p>
+    <p><strong>Número de Deportistas por Equipo:</strong> {{ campeonato.nro_deportistas }}</p>
+    <p><strong>Estado:</strong> {% if campeonato.inicializado %}Inicializado{% else %}No Inicializado{% endif %}</p>
+
+    <h2>Equipos Inscritos</h2>
+    <ul>
+        {% for equipo in campeonato.equipos.all %}
+            <li>
+                {{ equipo.nombre }}
+                <a href="{% url 'detalle_equipo_por_campeonato' equipo.id campeonato.id %}">Detalles</a>
+                <a href="{% url 'eliminar_equipo' equipo.id campeonato.id %}">Eliminar</a>
+            </li>
+        {% empty %}
+            <li>No hay equipos inscritos.</li>
+        {% endfor %}
+    </ul>
+
+    {% if error_message %}
+        <div class="modal" id="errorModal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <p>{{ error_message }}</p>
+            </div>
+        </div>
+        <script>
+            var modal = document.getElementById('errorModal');
+            var span = document.getElementsByClassName('close-button')[0];
+            window.onload = function() {
+                modal.style.display = 'block';
+            }
+            span.onclick = function() {
+                modal.style.display = 'none';
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        </script>
+    {% endif %}
+
+    {% if not campeonato.inicializado %}
+        <a href="{% url 'inicializar_campeonato' campeonato.id %}" class="button">Inicializar Campeonato</a>
+    {% endif %}
+
+    <a href="{% url 'home' %}">Volver al Inicio</a>
+{% endblock %}

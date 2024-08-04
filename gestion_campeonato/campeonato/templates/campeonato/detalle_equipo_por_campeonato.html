@@ -1,0 +1,30 @@
+{% extends 'campeonato/base.html' %}
+
+{% block title %}Detalles del Equipo en el Campeonato{% endblock %}
+
+{% block content %}
+    <h1>{{ equipo.nombre }}</h1>
+    <p><strong>Género:</strong> {{ equipo.genero }}</p>
+    <p><strong>Deporte:</strong> {{ equipo.deporte }}</p>
+    <p><strong>Campeonato:</strong> {{ campeonato.nombre }}</p>
+    
+    <h2>Deportistas del Equipo en el Campeonato</h2>
+    <ul>
+        {% for deportista in deportistas %}
+            <li>
+                {{ deportista.nombre }} {{ deportista.apellido }}
+                <a href="{% url 'detalle_deportista' deportista.id %}">Detalles</a>
+                <a href="{% url 'eliminar_deportista' deportista.id %}">Eliminar</a>
+                <span>(Participación en: {{ deportista.participacion.campeonato.nombre }})</span>
+            </li>
+        {% empty %}
+            <li>No hay deportistas en este equipo para este campeonato.</li>
+        {% endfor %}
+    </ul>
+
+    {% if puede_agregar_deportista %}
+        <a href="{% url 'agregar_deportista' equipo.id campeonato.id %}" class="button">Agregar Deportista</a>
+    {% endif %}
+    
+    <a href="{% url 'home' %}" class="button">Volver al Inicio</a>
+{% endblock %}
