@@ -33,6 +33,7 @@ class Campeonato(models.Model):
     nro_equipos = models.IntegerField()
     nro_jugadores = models.IntegerField()
     equipos = models.ManyToManyField('Equipo', through='Inscripcion')
+    inicializado = models.BooleanField(default=False)
 
 class Inscripcion(models.Model):
     equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE)

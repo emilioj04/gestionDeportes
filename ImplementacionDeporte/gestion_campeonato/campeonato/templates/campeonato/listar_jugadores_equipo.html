@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jugadores del Equipo</title>
+</head>
+<body>
+    <h1>Jugadores del Equipo {{ inscripcion.equipo.nombre }} en el Campeonato {{ inscripcion.campeonato.nombre }}</h1>
+    <ul>
+        {% for jugador in jugadores %}
+            <li>
+                {{ jugador.nombre }} - {{ jugador.identificacion }}
+                <a href="{% url 'editar_jugador' jugador.id %}">Editar</a>
+                <a href="{% url 'eliminar_jugador' jugador.id %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'agregar_jugador' inscripcion.id %}">Agregar Jugador</a>
+    <a href="{% url 'listar_equipos_por_campeonato' %}">Volver a la Lista de Equipos</a>
+</body>
+</html>
+
