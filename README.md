@@ -2,7 +2,11 @@
 
 Realizado por: Emilio Jaramillo.
 
-Es un sistema que permite manejar un campeonato deportivo, para algunos deportes, especialmente para futbol, hecho con el framework de django, y utilizando programacion orientada a objetos
+Es un sistema que permite manejar un campeonato deportivo, para algunos deportes, especialmente para futbol, hecho con el framework de django, y utilizando programacion orientada a objetos, cumpel con los requerimentos de:
+
+- Inscribir un equipo a diferentes campeonatos con diferentes deportistas
+- Manejar el resultado 2 a 2 de un partido
+- Manejar la tabla de Posiciones de los campeonatos
 
 #Diagrama de Clases:
 
