@@ -65,4 +65,4 @@ class PartidoForm(forms.ModelForm):
         fields = ['fecha', 'equipo_local', 'equipo_visitante', 'goles_local', 'goles_visitante']
         widgets = {
             'fecha': forms.DateInput(attrs={'type': 'date'}),
-        }
+        }   

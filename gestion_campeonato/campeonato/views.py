@@ -2,8 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from .forms import *
 from django.http import HttpResponse
-from django.db.models import Sum
-
 
 
 def home(request):
@@ -179,11 +177,9 @@ def inicializar_campeonato(request, campeonato_id):
     equipos_faltantes = []
     equipos_sin_deportistas_suficientes = []
     
-    # Verifica si hay menos de dos equipos
     if equipos.count() < 2:
         return HttpResponse("Se necesitan al menos dos equipos para inicializar el campeonato.", status=400)
     
-    # Verifica si cada equipo tiene al menos un deportista
     for equipo in equipos:
         try:
             participacion = Participacion.objects.get(equipo=equipo, campeonato=campeonato)
@@ -192,7 +188,6 @@ def inicializar_campeonato(request, campeonato_id):
         except Participacion.DoesNotExist:
             equipos_sin_deportistas_suficientes.append(equipo.nombre)
     
-    # Verifica si se cumplen las advertencias
     if equipos.count() < campeonato.nro_equipos:
         equipos_faltantes.append(f'El campeonato tiene solo {equipos.count()} de los {campeonato.nro_equipos} equipos necesarios.')
     
@@ -201,7 +196,6 @@ def inicializar_campeonato(request, campeonato_id):
     
     if request.method == 'POST':
         if 'confirmar' in request.POST and request.POST['confirmar'] == 'si':
-            # Guardar el estado de inicialización
             campeonato.inicializado = True
             campeonato.save()
             return redirect('detalle_campeonato', campeonato_id=campeonato_id)
