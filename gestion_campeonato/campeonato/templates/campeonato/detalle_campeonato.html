@@ -54,5 +54,58 @@
         <a href="{% url 'inicializar_campeonato' campeonato.id %}" class="button">Inicializar Campeonato</a>
     {% endif %}
 
+    <h2>Partidos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Equipo Local</th>
+                <th>Goles Local</th>
+                <th>Equipo Visitante</th>
+                <th>Goles Visitante</th>
+                <th>Puntos Local</th>
+                <th>Puntos Visitante</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for partido in partidos %}
+            <tr>
+                <td>{{ partido.fecha }}</td>
+                <td>{{ partido.equipo_local.nombre }}</td>
+                <td>{{ partido.goles_local }}</td>
+                <td>{{ partido.equipo_visitante.nombre }}</td>
+                <td>{{ partido.goles_visitante }}</td>
+                <td>{{ partido.puntos_local }}</td>
+                <td>{{ partido.puntos_visitante }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Crear Partido</h2>
+    <form method="post" class="form-container">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button">Crear Partido</button>
+    </form>
+
+    <h2>Tabla de Posiciones</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Equipo</th>
+                <th>Puntos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for posicion in posiciones %}
+            <tr>
+                <td>{{ posicion.equipo.nombre }}</td>
+                <td>{{ posicion.puntos }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
     <a href="{% url 'home' %}">Volver al Inicio</a>
 {% endblock %}

@@ -68,3 +68,25 @@ class Deportista(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
+
+class Partido(models.Model):
+    campeonato = models.ForeignKey(Campeonato, on_delete=models.CASCADE, related_name='partidos')
+    equipo_local = models.ForeignKey(Equipo, on_delete=models.CASCADE, related_name='partidos_local')
+    equipo_visitante = models.ForeignKey(Equipo, on_delete=models.CASCADE, related_name='partidos_visitante')
+    fecha = models.DateField()
+    goles_local = models.IntegerField(default=0)
+    goles_visitante = models.IntegerField(default=0)
+    puntos_local = models.IntegerField(default=0)
+    puntos_visitante = models.IntegerField(default=0)
+
+    def save(self, *args, **kwargs):
+        if self.goles_local > self.goles_visitante:
+            self.puntos_local = 3
+            self.puntos_visitante = 0
+        elif self.goles_local < self.goles_visitante:
+            self.puntos_local = 0
+            self.puntos_visitante = 3
+        else:
+            self.puntos_local = 1
+            self.puntos_visitante = 1
+        super().save(*args, **kwargs)

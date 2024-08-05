@@ -10,4 +10,25 @@
         <button type="submit" class="btn">Crear Campeonato</button>
     </form>
     <a href="{% url 'home' %}" class="btn-back">Volver al Inicio</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tipoField = document.querySelector('select[name="tipo"]');
+            const nroGruposField = document.querySelector('input[name="nro_grupos"]').closest('.form-row');
+            const equiposPorGrupoField = document.querySelector('input[name="equipos_por_grupo"]').closest('.form-row');
+
+            function toggleFields() {
+                if (tipoField.value === 'grupos') {
+                    nroGruposField.style.display = 'block';
+                    equiposPorGrupoField.style.display = 'block';
+                } else {
+                    nroGruposField.style.display = 'none';
+                    equiposPorGrupoField.style.display = 'none';
+                }
+            }
+
+            tipoField.addEventListener('change', toggleFields);
+            toggleFields(); // Run on page load
+        });
+    </script>
 {% endblock %}
