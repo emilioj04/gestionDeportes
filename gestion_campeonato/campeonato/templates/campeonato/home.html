@@ -1,0 +1,14 @@
+{% extends "campeonato/base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <h1>Inicio</h1>
+    <ul>
+        <li><a href="{% url 'crear_campeonato' %}">Crear Campeonato</a></li>
+        <li><a href="{% url 'crear_equipo' %}">Crear Equipo</a></li>
+        <li><a href="{% url 'inscribir_equipo' %}">Inscribir Equipo a Campeonato</a></li>
+        <li><a href="{% url 'lista_campeonatos' %}">Lista de Campeonatos</a></li>
+    </ul>
+{% endblock %}
+

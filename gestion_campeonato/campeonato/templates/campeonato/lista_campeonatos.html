@@ -1,0 +1,16 @@
+{% extends 'campeonato/base.html' %}
+
+{% block title %}Lista de Campeonatos{% endblock %}
+
+{% block content %}
+    <h1>Lista de Campeonatos</h1>
+    <ul>
+        {% for campeonato in campeonatos %}
+            <li>
+                {{ campeonato.nombre }}
+                <a href="{% url 'detalle_campeonato' campeonato.id %}">Detalles</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}" class="button">Volver al Inicio</a>
+{% endblock %}
