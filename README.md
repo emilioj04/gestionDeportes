@@ -8,11 +8,11 @@ Es un sistema que permite manejar un campeonato deportivo, para algunos deportes
 - Manejar el resultado 2 a 2 de un partido
 - Manejar la tabla de Posiciones de los campeonatos
 
-#Diagrama de Clases:
+-Diagrama de Clases:
 
 ![diagramaUML](https://github.com/user-attachments/assets/91b350af-79ff-44fc-bc75-4aa48aac8214)
 
-#Como ejecutar el proyecto
+-Como ejecutar el proyecto
 
 Para ejecutar el proyecto se debe seguir los siguientes pasos:
 
@@ -55,58 +55,58 @@ Para ejecutar el proyecto se debe seguir los siguientes pasos:
    ![image](https://github.com/user-attachments/assets/c6e96bd9-41fa-402e-b571-32633719c56c)
 
 
-#Funcionamiento:
+-Funcionamiento:
 
-#Crear Campeonato
-
-![image](https://github.com/user-attachments/assets/bb979b85-e83f-435c-b837-e3f997c78663)
-
-Aqui podremos crear un nuevo campeonato rellenando los espacios del formulario con la informacion necesaria
-
-#Crear Equipo
-
-![image](https://github.com/user-attachments/assets/3381d50d-3ac7-4696-a222-8a1223bf5e3e)
-
-De igual manera podemos crear un nuevo equipo con el formulario.
-
-#Inscribir Equipo
-
-![image](https://github.com/user-attachments/assets/09726d98-fca0-49ef-8899-110a84e44578)
-
-Con este formulario vamos a poder inscribir un equipo a un campeonato, el equipo solo se puede inscribir una sola vez al campeonato, y todos los equipos se pueden inscribir a diferentes campeonatos.
-
-#Lista de Campeonatos
-
-![image](https://github.com/user-attachments/assets/d187c11d-6b57-4156-9325-9a29dae48dee)
-
-Aqui nos apareceran todos los campeonatos generados y un acceso al detalle de cada campeonato
-
-#Detalle de Campeonato
-
-![image](https://github.com/user-attachments/assets/14cc6237-2140-4717-9d10-0f54a51b5f70)
-
-Aqui nos aparece el detalle del campeonato, con los equipos inscritos, un boton para inicializar el campeonato, los partidos creados para ese campeonato, un formulario para crear partidos, y la tabla de posiciones del campeonato
-
-En el detalle de cada Equipo, tenemos dos accesos uno para ver el detalle del equipo, y otro para eliminar ese equipo de ese campeonato, 
-
-![image](https://github.com/user-attachments/assets/7cecd367-8ac1-4a0e-a237-de6566bda253)
-
-#Detalle de Equipo
-
-![image](https://github.com/user-attachments/assets/65b2db66-f3f0-4603-ae44-5cf62599f4a1)
-
-En esta vista tenemos el detalle del equipos, asi como la lista de deportistas que estan en el equipo en esa participacion a ese campeonato, ademas tenemos un acceso para ver el detalle de cada deportista, y otra para eliminar a ese deportisra, ademas al final tenemos un acceso para agregar un nuevo deportista a la participacion del equipo.
-
-#Agregar Deportista
-
-![image](https://github.com/user-attachments/assets/81d56d2b-103e-4db3-b0ad-78b7ade14bf8)
-
-Aqui mediante el formulario se puede agregar un nuevo deportista al equipo
-
-#Detalle del Deportista
-
-![image](https://github.com/user-attachments/assets/590a10bd-dc36-422f-b3ee-ebb7d1cecd28)
-
-Aqui podemos ver el detalle del deportista.
-
-
+    -Crear Campeonato
+    
+    ![image](https://github.com/user-attachments/assets/bb979b85-e83f-435c-b837-e3f997c78663)
+    
+    Aqui podremos crear un nuevo campeonato rellenando los espacios del formulario con la informacion necesaria
+    
+    -Crear Equipo
+    
+    ![image](https://github.com/user-attachments/assets/3381d50d-3ac7-4696-a222-8a1223bf5e3e)
+    
+    De igual manera podemos crear un nuevo equipo con el formulario.
+    
+    -Inscribir Equipo
+    
+    ![image](https://github.com/user-attachments/assets/09726d98-fca0-49ef-8899-110a84e44578)
+    
+    Con este formulario vamos a poder inscribir un equipo a un campeonato, el equipo solo se puede inscribir una sola vez al campeonato, y todos los equipos se pueden inscribir a diferentes campeonatos.
+    
+    -Lista de Campeonatos
+    
+    ![image](https://github.com/user-attachments/assets/d187c11d-6b57-4156-9325-9a29dae48dee)
+    
+    Aqui nos apareceran todos los campeonatos generados y un acceso al detalle de cada campeonato
+    
+    -Detalle de Campeonato
+    
+    ![image](https://github.com/user-attachments/assets/14cc6237-2140-4717-9d10-0f54a51b5f70)
+    
+    Aqui nos aparece el detalle del campeonato, con los equipos inscritos, un boton para inicializar el campeonato, los partidos creados para ese campeonato, un formulario para crear partidos, y la tabla de posiciones del campeonato
+    
+    En el detalle de cada Equipo, tenemos dos accesos uno para ver el detalle del equipo, y otro para eliminar ese equipo de ese campeonato, 
+    
+    ![image](https://github.com/user-attachments/assets/7cecd367-8ac1-4a0e-a237-de6566bda253)
+    
+    -Detalle de Equipo
+    
+    ![image](https://github.com/user-attachments/assets/65b2db66-f3f0-4603-ae44-5cf62599f4a1)
+    
+    En esta vista tenemos el detalle del equipos, asi como la lista de deportistas que estan en el equipo en esa participacion a ese campeonato, ademas tenemos un acceso para ver el detalle de cada deportista, y otra para eliminar a ese deportisra, ademas al final tenemos un acceso para agregar un nuevo deportista a la participacion del equipo.
+    
+    -Agregar Deportista
+    
+    ![image](https://github.com/user-attachments/assets/81d56d2b-103e-4db3-b0ad-78b7ade14bf8)
+    
+    Aqui mediante el formulario se puede agregar un nuevo deportista al equipo
+    
+    -Detalle del Deportista
+    
+    ![image](https://github.com/user-attachments/assets/590a10bd-dc36-422f-b3ee-ebb7d1cecd28)
+    
+    Aqui podemos ver el detalle del deportista.
+    
+    
