@@ -1,0 +1,36 @@
+{% extends 'campeonato/base.html' %}
+
+{% block title %}Crear Partido{% endblock %}
+
+{% block content %}
+    <h1>Crear Partido para el Campeonato: {{ campeonato.nombre }}</h1>
+    <form method="post" action="{% url 'crear_partido' campeonato.id %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="equipo_local">Equipo Local:</label>
+            <select id="equipo_local" name="equipo_local" required>
+                {% for equipo in campeonato.equipos.all %}
+                    <option value="{{ equipo.id }}">{{ equipo.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="equipo_visitante">Equipo Visitante:</label>
+            <select id="equipo_visitante" name="equipo_visitante" required>
+                {% for equipo in campeonato.equipos.all %}
+                    <option value="{{ equipo.id }}">{{ equipo.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="goles_local">Goles del Equipo Local:</label>
+            <input type="number" id="goles_local" name="goles_local" min="0" required>
+        </div>
+        <div class="form-group">
+            <label for="goles_visitante">Goles del Equipo Visitante:</label>
+            <input type="number" id="goles_visitante" name="goles_visitante" min="0" required>
+        </div>
+        <button type="submit" class="button">Crear Partido</button>
+    </form>
+    <a href="{% url 'detalle_campeonato' campeonato.id %}">Volver al Detalle del Campeonato</a>
+{% endblock %}
